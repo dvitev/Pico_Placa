@@ -1,0 +1,23 @@
+<h1>Picoplaca#index</h1>
+<p style="text-align: center; font-size: 15px;"><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" /></p>
+<h1 style="text-align: center;">Sistema de Verificacion Pico y Placa (Quito - Pichincha - Ecuador)</h1>
+<%= form_for :pplaca, url: pplacas_path do |f| %>
+
+<p>
+	<%= f.label :placa %> <br>
+	<%= f.text_field :placa %>
+</p>
+<p>
+	<%= f.label :fecha %> <br>
+	<%= f.date_field :fecha %>
+</p>
+<p>
+	<%= f.label :hora %> <br>
+  <%= h= f.time_field :hora %>
+</p>
+<p>
+	<%= f.submit 'Guardar' %>
+</p>
+<% end %>
+
+<%= link_to 'Volver', pplacas_path %>

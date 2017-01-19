@@ -1,0 +1,29 @@
+<p style="text-align: center; font-size: 15px;"><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" /></p>
+<h1 style="text-align: center;">Sistema de Verificacion Pico y Placa (Quito - Pichincha - Ecuador)</h1>
+<% p=@pplaca.placa %>
+<p>
+	<strong>Placa</strong>
+	<%= p %>
+</p>
+<p>
+	<strong>Ultimo Numero de Placa</strong>
+	<%= p.reverse[0] %>
+</p>
+<p>
+	<strong>Fecha</strong>
+	<%= @pplaca.fecha %>
+</p>
+<p>
+	<strong>Hora</strong>
+	<% h = time_format(@pplaca.hora) %>
+	<%= h  %>
+</p>
+<p>
+	<% set_datetime1(@pplaca.hora) %>
+	<% set_datetime2(@pplaca.fecha) %>
+	<% set_digito(@pplaca.placa.reverse[0]) %>
+	<% p = comprobar_dia() %>
+	<%= p %>
+</p>
+<%= link_to 'Volver', pplacas_path %>
+<%= link_to 'Editar', edit_pplaca_path %>

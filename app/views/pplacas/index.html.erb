@@ -1,0 +1,34 @@
+<p style="text-align: center; font-size: 15px;"><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" /></p>
+<h1 style="text-align: center;">Sistema de Verificacion Pico y Placa (Quito - Pichincha - Ecuador)</h1>
+
+<h1>Listando Placas</h1>
+ 
+<table border="1">
+  <tr>
+    <th>Placa</th>
+    <th>Ultimo Digito</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th></th>
+    <th colspan="3"></th>
+  </tr>
+  <% p=@pplaca %>
+  <% p.each do |placa| %>
+    <tr>
+      <td style="text-align: center;"><%= placa.placa %></td>
+      <td style="text-align: center;"><%= placa.placa.reverse[0] %></td>
+      <td style="text-align: center;"><%= placa.fecha %></td>
+      <td style="text-align: center;"><% h = time_format(placa.hora)%>
+          <%= h %></td>
+      <td style="text-align: center;"><% set_datetime1(placa.hora) %><% set_datetime2(placa.fecha) %> <% set_digito(placa.placa.reverse[0]) %> <% p = comprobar_dia()%><%= p %></td>
+      <td style="text-align: center;"><%= link_to 'Ver', pplaca_path(placa) %>
+      </td>
+      <td style="text-align: center;"><%= link_to 'Editar',edit_pplaca_path(placa) %>
+      </td>
+      <td style="text-align: center;">
+        <%= link_to 'Borrar', pplaca_path(placa),method: :delete,data:{confirm:'Estas seguro de querer borrar?'} %>
+      </td>
+    </tr>
+  <% end %> 
+</table>
+<%= link_to 'Nuevo', new_pplaca_path %>
